@@ -1,5 +1,7 @@
 const express = require("express");
 const urls = require("./data/urls-data"); //import URL data
+const uses = require("./data/uses-data");
+
 
 const app = express(); //initialize the express app
 
@@ -14,8 +16,7 @@ app.get("/urls", (req, res) => {
 app.post("/urls", (req,res) => {
     const { href } = req.body;
     const newUrlId = urls.length + 1; // assign new ID
-    const newUrl = { id: newUrl, href };
-
+    const newUrl = { id: newUrlId, href };
     urls.push(newUrl); // add to the urls array
     res.status(201).json({ data: newUrl }); //return new URL 
 });
